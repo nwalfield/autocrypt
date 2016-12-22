@@ -1,4 +1,3 @@
-
 Features of the Autocrypt effort
 --------------------------------
 
