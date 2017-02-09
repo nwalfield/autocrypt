@@ -20,6 +20,7 @@ def main():
                      'Intended Audience :: Developers',
                      'Programming Language :: Python'],
         packages=['autocrypt'],
+        install_requires=["pgpy>=0.4.0"],
         zip_safe=False,
     )
 
