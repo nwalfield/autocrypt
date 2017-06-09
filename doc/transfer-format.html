@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.13.1: http://docutils.sourceforge.net/" />
+<title>Key Transfer Format</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="key-transfer-format">
+<h1 class="title">Key Transfer Format</h1>
+
+<p>This document describes a format recommendation for secret key backup
+attchments. The Autocrypt Key Transfer Format is designed to work as an
+attachment in a mail client that can be handled automatically by Autocrypt
+clients, but also strives for usability when saved as a file in agnostic
+clients.</p>
+<p>This goal is achieved by two mechanisms:</p>
+<ul class="simple">
+<li>The MIME part MUST have a Content-Disposition of &quot;attachment&quot;. Its filename,
+as specified in Content-Type and Content-Disposition header parameters, MUST
+have an extension of &quot;.html&quot;.</li>
+<li>The file MUST be formatted as proper HTML. It SHOULD give a human-readable
+description at the beginning, and MUST include the encrypted key as a
+contiguous block of ASCII-armored data, with no indentation or HTML tags
+inside. This block SHOULD reside inside a &lt;pre&gt; block for readability.</li>
+</ul>
+<p>With this technique, the way the attachment is handled when saved to disk by the
+user is independent from its handling by clients aware of its Content-Type. HTML
+as the actual file content is chosen as a universal and familiar format. It can
+be opened in a browser, allowing the file to provide a description of itself &quot;on
+double-click&quot; on almost any system.</p>
+<p>Since the file contains an easy to locate block of ASCII-armored data, it can
+still easily be processed by OpenPGP tools. In particular, GnuPG ignores the
+header before the armored data starts, so a regular call to <code>gpg
+--decrypt</code> still works.</p>
+<p>An exemplary secret key backup MIME part would look as such:</p>
+<pre class="code html literal-block">
+Content-Type: application/pgp-key-backup; name=&quot;Autocrypt-Key for name-at-example.org.html&quot;
+Content-Description: OpenPGP Digital Signature
+Content-Disposition: attachment; filename=&quot;Autocrypt-Key for name-at-example.org.html&quot;
+
+<span class="punctuation">&lt;</span><span class="name tag">html</span><span class="punctuation">&gt;&lt;</span><span class="name tag">body</span><span class="punctuation">&gt;&lt;</span><span class="name tag">h1</span><span class="punctuation">&gt;</span>Autocrypt Key<span class="punctuation">&lt;/</span><span class="name tag">h1</span><span class="punctuation">&gt;&lt;</span><span class="name tag">p</span><span class="punctuation">&gt;</span>
+
+This is an Autocrypt Key file. When imported into an Autocrypt capable E-Mail
+client with its backup code, it can be used to read encrypted E-Mail sent to
+name&#64;example.org.
+
+<span class="punctuation">&lt;/</span><span class="name tag">p</span><span class="punctuation">&gt;&lt;</span><span class="name tag">pre</span><span class="punctuation">&gt;</span>
+-----BEGIN PGP MESSAGE-----
+
+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
+=CwOM
+-----END PGP MESSAGE-----
+<span class="punctuation">&lt;/</span><span class="name tag">pre</span><span class="punctuation">&gt;&lt;</span><span class="name tag">hr</span><span class="punctuation">&gt;&lt;</span><span class="name tag">i</span><span class="punctuation">&gt;&lt;</span><span class="name tag">a</span> <span class="name attribute">href</span><span class="operator">=</span><span class="literal string">&quot;http://example.org/&quot;</span><span class="punctuation">&gt;</span>Generated by Autocrypt-capable Client™<span class="punctuation">&lt;/</span><span class="name tag">a</span><span class="punctuation">&gt;</span>.<span class="punctuation">&lt;/</span><span class="name tag">i</span><span class="punctuation">&gt;&lt;/</span><span class="name tag">body</span><span class="punctuation">&gt;&lt;/</span><span class="name tag">html</span><span class="punctuation">&gt;</span>
+</pre>
+</div>
+</body>
+</html>
